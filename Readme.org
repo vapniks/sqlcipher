@@ -1,0 +1,36 @@
+* Commentary
+This file provides a backend for connecting to encrypted sqlite databases
+with emacs `sql-connect' using sqlcipher.
+You can store connection information in `sql-connection-alist'. The path
+to the database file should be stored in `sql-database', and you can either
+store the encryption key as plain text in `sql-password' or in one of your
+`auth-sources' files. In the latter case you can store the host and port
+entries in `sql-server' and `sql-user' respectively in the `sql-connection-alist' entry.
+
+* Installation
+
+ - Put the library in a directory in the emacs load path, like ~/.emacs.d
+ - You can add a directory to your load-path with the following line in ~/.emacs
+   (add-to-list 'load-path (expand-file-name "~/elisp"))
+   where ~/elisp is the directory you want to add 
+   (you don't need to do this for ~/.emacs.d - it's added by default).
+ - Add the following to your ~/.emacs startup file: (require 'sqlcipher)
+
+* Commands & keybindings
+
+ Below is a complete list of commands:
+
+   - *sql-sqlcipher* :
+    Run sqlcipher as an inferior process.\\
+    Keybinding: =M-x sql-sqlcipher=
+
+* Customizable Options
+
+ Below is a list of customizable options:
+
+   - *sql-sqlcipher-program* :
+    Location of sqlcipher binary.\\
+    default value: =(or (executable-find "sqlcipher") "sqlcipher")=
+   - *sql-sqlcipher-options* :
+    List of additional options for  - *sql-sqlcipher-program* :.\\
+    default value: =nil=
